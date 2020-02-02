@@ -21,6 +21,7 @@ program.
   .option('-s', '--no-specs', 'create project without the tests folder')
   .option('--ignore-setup', 'ignore the initial setup of the project (name and version)')
   .option('--ignore-dependencies', 'ignore the install of the node_modules')
+  .option('--silent', 'do not show any logs while creating')
   .action(async function (projectPath, options) {
     ProjectGenerator.go({ projectPath, options });
   });
