@@ -6,11 +6,11 @@ NoGe is a project generator for [Node.js](https://nodejs.org) web frameworks (se
 
 With npm:
 ```bash
-npm install -g nog
+npm install -g noge
 ```
 With yarn:
 ```bash
-yarn global add nog
+yarn global add noge
 ```
 
 ## Project structure
@@ -54,12 +54,12 @@ These are all the available commands
 ```
 Options:
 
-create <name>           create a new project with the given name
-scaffold <name>         create a controller, model and route at the same time
-controller <name>				create a controller
-model <name>            create a model
-service <name>					create a service
-route <name>            create a route
+create <name>          create a new project with the given name
+scaffold <name>        create a controller, model and route at the same time
+controller <name>      create a controller
+model <name>           create a model
+service <name>         create a service
+route <name>           create a route
 ```
 
 ## Commands options
@@ -70,10 +70,10 @@ These are all the available options for each command
 ```
 Options:
 
---no-specs 									create project without the tests folder
---ignore-setup 							ignore the initial setup of the project (name and version)
---ignore-dependencies				ignore the install of the node_modules
---silent 										do not show any logs while creating
+--no-specs 		   create project without the tests folder
+--ignore-setup             ignore the initial setup of the project (name and version)
+--ignore-dependencies      ignore the install of the node_modules
+--silent 		   do not show any logs while creating
 ```
 
 ### # scaffold \<name\>
@@ -81,13 +81,13 @@ Options:
 ```
 Options:
 
---no-spec                 							do not generate spec file for the generated model and controller
---empty-controller        							generate a controller without default actions. This overrides the actions option
---table                   							the corresponding table name of the model
---has-many <model>[:[from, to]]					generate a has many relation with the specified model
---belongs-to <model>[:[from, to]]				generate a belongs to relation with the specified model
---has-one <model>[:[from, to]]					generate a has one relation with the specified model
---create-model-relations								create the models of the specified relations
+--no-spec			       do not generate spec file for the generated model and controller
+--empty-controller                     generate a controller without default actions. This overrides the actions option
+--table                   	       the corresponding table name of the model
+--has-many <model>[:[from, to]]	       generate a has many relation with the specified model
+--belongs-to <model>[:[from, to]]      generate a belongs to relation with the specified model
+--has-one <model>[:[from, to]]         generate a has one relation with the specified model
+--create-relations                     create the models of the specified relations
 ```
 
 ### # scaffold \<name\> [--has-many | --has-one | --belongs-to]
@@ -109,9 +109,9 @@ noge scaffold user --has-one address:[id, user_id]
 ```
 Options:
 
---no-spec                                               do not generate spec file for the generated controller
---empty-controller                              				generate a controller without default actions. This overrides the actions option
---actions [index, show, create, update, destroy]				specify wich actions to generate
+--no-spec                                             do not generate spec file for the generated controller
+--empty-controller                                    generate a controller without default actions. This overrides the actions option
+--actions [index, show, create, update, destroy]      specify wich actions to generate
 ```
 
 ### # model \<name\>
@@ -119,12 +119,12 @@ Options:
 ```
 Options:
 
---no-spec       												do not generate spec file for the generated model
---table         												the corresponding table name of the model
---has-many <model>[:[from, to]]					generate a has many relation with the specified model
---belongs-to <model>[:[from, to]]				generate a belongs to relation with the specified model
---has-one <model>[:[from, to]]					generate a has one relation with the specified model
---create-model-relations								create the models of the specified relations
+--no-spec                              do not generate spec file for the generated model
+--table                                the corresponding table name of the model
+--has-many <model>[:[from, to]]	       generate a has many relation with the specified model
+--belongs-to <model>[:[from, to]]      generate a belongs to relation with the specified model
+--has-one <model>[:[from, to]]         generate a has one relation with the specified model
+--create-relations                     create the models of the specified relations
 ```
 
 ### # model \<name\> [--has-many | --has-one | --belongs-to]
@@ -146,9 +146,9 @@ noge model user --has-one address:[id, user_id]
 ```
 Options:
 
---empty-body							do not generate actions for the service
---actions <actions>				specify which actions to generate for the service
---project-path						the path for project dir if it is different from the current dir
+--empty-body             do not generate actions for the service
+--actions <actions>      specify which actions to generate for the service
+--project-path           the path for project dir if it is different from the current dir
 ```
 
 Examples:
