@@ -100,7 +100,8 @@ test("should create a service with requested params replaced", async () => {
   let serviceSettings = {
     serviceName: 'user',
     options: {
-      projectPath: projectPath
+      projectPath: projectPath,
+      emptyBody: true
     }
   };
 
