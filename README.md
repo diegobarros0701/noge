@@ -1,5 +1,5 @@
 
-## NoGe
+# NoGe
 NoGe is a project generator for [Node.js](https://nodejs.org) web frameworks (see [Supported Frameworks](#supported-frameworks)) with **optionally** a **ORM** (see [Supoorted ORMs](#supported-orms))
 
 ## Install
@@ -180,5 +180,19 @@ noge route user index, show, update
 ## Supported ORMs
 
  - [Objection.js](https://vincit.github.io/objection.js/)
+ 
+## Testing
+
+For testing just go to the root or to `tests` folder and run:
+
+```bash
+yarn test
+```
+or
+```bash
+npm test
+```
+
+
 
 ## Contributing
