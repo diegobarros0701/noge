@@ -18,7 +18,7 @@ console.log(
 program.
   command('create <path>')
   .description('create a new project')
-  .option('-s', '--no-specs', 'create project without specs')
+  .option('-s', '--no-specs', 'create project without the tests folder')
   .option('--ignore-setup', 'ignore the initial setup of the project (name and version)')
   .option('--ignore-dependencies', 'ignore the install of the node_modules')
   .action(async function (projectPath, options) {
