@@ -1,0 +1,23 @@
+const { Model } = require('objection');
+
+class {{ name }} extends Model {
+  static get tableName() {
+    return '{{ tableName }}';
+  }
+
+  static get jsonSchema() {
+    return {
+      // Write your schema definition
+    };
+  }
+
+  $beforeInsert() {
+    delete this.id;
+  }
+
+  $beforeUpdate() {
+    delete this.id;
+  }
+}
+
+module.exports = {{ name }};

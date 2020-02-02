@@ -1,0 +1,13 @@
+show(req, res) {
+    {{ modelName }}.getOne(req.params.id)
+      .then(({{ varName }}) => {
+        res.json({{ varName }});
+      })
+      .catch((error) => {
+        res.status(error instanceof NotFoundError ? 404 : 500)
+          .json({
+            error: true,
+            message: error.message
+          });
+      });
+  }

@@ -1,0 +1,9 @@
+const {{ modelName }} = require('../models/{{ modelName }}.js');
+
+module.exports = {
+  {%- for action in actions %}
+  {% include  "templates/controller/actions/promise/" + action + ".njk" ignore missing %}
+  {{- "," if loop.index < (actions | length) }}
+{% endfor %}
+
+{{- '};' -}}

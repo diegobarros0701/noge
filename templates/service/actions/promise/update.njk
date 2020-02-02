@@ -1,0 +1,12 @@
+static async update({ id = null, data, method }) {
+    let {{ varName }} = {{ modelClassName }}.query()
+      .throwIfNotFound();
+
+    if (method == 'PUT')
+      {{ varName }} = {{ varName }}.updateAndFetchById(id, data);
+    else {
+      {{ varName }} = {{ varName }}.patchAndFetchById(id, data);
+    }
+
+    return await {{ varName }};
+  }

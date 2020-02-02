@@ -1,0 +1,19 @@
+update(req, res) {
+    Cargo.update({ id: req.params.id, data: req.body, method: req.method })
+      .then((cargo) => {
+        res.json(cargo);
+      })
+      .catch((error) => {
+        if (error instanceof ValidationError)
+          res.status(400);
+        else if (error instanceof NotFoundError)
+          res.status(404);
+        else
+          res.status(500);
+
+        res.json({
+          error: true,
+          message: error.message
+        });
+      });
+  }

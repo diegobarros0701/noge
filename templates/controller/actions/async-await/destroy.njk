@@ -1,0 +1,12 @@
+async destroy(req, res) {
+    try {
+      await {{ modelName }}.query().findById(req.params.id).delete();
+
+      res.status(204).send();
+    } catch(e) {
+      res.status(500).json({
+        error: true,
+        message: e.message
+      })
+    }
+  }

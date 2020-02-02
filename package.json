@@ -1,0 +1,55 @@
+{
+  "name": "noge",
+  "version": "1.0.0",
+  "description": "Generator for Node.js web projects",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Diego Barros",
+    "email": "diegobarros2812@gmail.com",
+    "url": "https://github.com/diegobarros0701"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diegobarros0701/wizard-steps.js.git"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "web",
+    "generator",
+    "scaffold",
+    "scaffolder",
+    "browser",
+    "library",
+    "package",
+    "module",
+    "js"
+  ],
+  "bin": {
+    "noge": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
+    "figlet": "^1.2.4",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^7.0.4",
+    "klaw-sync": "^6.0.0",
+    "nunjucks": "^3.2.0",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@types/jest": "^25.1.1",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0"
+  }
+}

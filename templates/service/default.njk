@@ -1,0 +1,9 @@
+const {{ modelClassName }} = require('../models/{{ modelFileName }}');
+
+class {{ serviceClassName }} {
+  {%- for action in actions %}
+  {% include  "service/actions/" + actionsStyle + "/" + action + ".njk" ignore missing %}
+{% endfor -%}
+}
+
+module.exports = { {{ serviceClassName }} };

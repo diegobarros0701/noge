@@ -1,0 +1,15 @@
+index(req, res) {
+    const { s, page } = req.query;
+
+    {{ modelName }}.get(s, page)
+      .then(({{ varName }}) => {
+        res.json({{ varName }});
+      })
+      .catch((error) => {
+        res.status(500)
+          .json({
+            error: true,
+            message: error.message
+          });
+      });
+  }

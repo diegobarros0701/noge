@@ -1,0 +1,6 @@
+static async insert(data) {
+    let {{ varName }} = await {{ modelClassName }}.query()
+      .insert(data);
+
+    return {{ varName }};
+  }

@@ -1,0 +1,10 @@
+const {{ modelName }} = require('../models/{{ modelName }}.js');
+const { NotFoundError, ValidationError } = require('objection');
+
+module.exports = {
+  {%- for action in actions %}
+  {% include  "controller/actions/" + controllerActionsStyle + "/" + action + ".njk" ignore missing %}
+  {{- "," if loop.index < (actions | length) }}
+{% endfor %}
+
+{{- '};' -}}

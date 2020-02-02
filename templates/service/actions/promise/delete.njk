@@ -1,0 +1,5 @@
+static async delete(id = null) {
+    await {{ modelClassName }}.query()
+      .throwIfNotFound()
+      .deleteById(id);
+  }

@@ -1,0 +1,14 @@
+store(req, res) {
+    {{ modelName }}.insert(req.body)
+      .then(({{ varName }}) => {
+        res.status(201).send({{ varName }});
+      })
+      .catch((error) => {
+        res
+          .status(error instanceof ValidationError ? 400 : 500)
+          .json({
+            error: true,
+            message: error.message
+          });
+      });
+  }

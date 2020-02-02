@@ -1,0 +1,19 @@
+update(req, res) {
+    {{ modelName }}.update({ id: req.params.id, data: req.body, method: req.method })
+      .then(({{ varName }}) => {
+        res.json({{ varName }});
+      })
+      .catch((error) => {
+        if (error instanceof ValidationError)
+          res.status(400);
+        else if (error instanceof NotFoundError)
+          res.status(404);
+        else
+          res.status(500);
+
+        res.json({
+          error: true,
+          message: error.message
+        });
+      });
+  }

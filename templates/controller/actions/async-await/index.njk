@@ -1,0 +1,12 @@
+async index(req, res) {
+    try {
+      let {{ varName }} = await {{ modelName }}.query();
+
+      res.json({{ varName }});
+    } catch(e) {
+      res.status(500).json({
+        error: true,
+        message: e.message
+      })
+    }
+  }

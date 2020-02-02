@@ -1,0 +1,12 @@
+async show(req, res) {
+    try {
+      let {{ varName }} = await {{ modelName }}.query().findById(req.params.id);
+
+      res.json({{ varName }});
+    } catch(e) {
+      res.status(500).json({
+        error: true,
+        message: e.message
+      })
+    }
+  }

@@ -1,0 +1,49 @@
+const {{ modelClassName }} = require('../models/{{ modelFileName }}');
+
+class {{ serviceClassName }} {
+  
+  {% if actions.get %}static async get(search, page) {
+    let {{ varNamePlural }} = {{ modelClassName }}.query();
+
+    if (search)
+      {{ varNamePlural }} = {{ varNamePlural }}.where('nome', 'ilike', '%' + search + '%');
+
+    if (page)
+      {{ varNamePlural }} = {{ varNamePlural }}.page(page, 10);
+
+    return {{ varNamePlural }};
+  }{% endif %}
+  {% if actions.getOne %}static async getOne(id) {
+    let {{ varName }} = await {{ modelClassName }}.query()
+      .throwIfNotFound()
+      .findById(id);
+
+    return {{ varName }};
+  }{% endif %}
+  {% if actions.insert %}static async insert(data) {
+    let {{ varName }} = await {{ modelClassName }}.query()
+      .insert(data);
+
+    return {{ varName }};
+  }{% endif %}
+  {% if actions.update %}static async update({ id = null, data, method }) {
+    let {{ varName }} = {{ modelClassName }}.query()
+      .throwIfNotFound();
+
+    if (method == 'PUT')
+      {{ varName }} = {{ varName }}.updateAndFetchById(id, data);
+    else {
+      {{ varName }} = {{ varName }}.patchAndFetchById(id, data);
+    }
+
+    return await {{ varName }};
+  }{% endif %}
+
+  {% if actions.delete %}static async delete(id = null) {
+    await {{ modelClassName }}.query()
+      .throwIfNotFound()
+      .deleteById(id);
+  }{% endif %}
+}
+
+module.exports = { {{ serviceClassName }} };

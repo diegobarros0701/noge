@@ -1,0 +1,8 @@
+static async get(search, page) {
+    let {{ varNamePlural }} = {{ modelClassName }}.query();
+
+    if (page)
+      {{ varNamePlural }} = {{ varNamePlural }}.page(page, 10);
+
+    return {{ varNamePlural }};
+  }
