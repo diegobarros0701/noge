@@ -153,10 +153,11 @@ test("should not create a service without a get function", async () => {
 
   await ServiceGenerator.go(serviceSettings);
 
+  let actionsStyle = 'promise';
   let serviceTemplate = fs.readFileSync(helpers.LIB_SERVICE_TEMPLATE_DEFAULT_PATH, { encoding: 'utf-8' });
-  let serviceTemplateWithParamsReplaced = nunjucks.renderString(serviceTemplate, { modelClassName: 'User', modelFileName: 'User', serviceClassName: 'UserService', actions: { get: true } });
+  let serviceTemplateWithParamsReplaced = nunjucks.renderString(serviceTemplate, { actionsStyle, modelClassName: 'User', modelFileName: 'User', varName: 'user', varNamePlural: 'users', serviceClassName: 'UserService', actions: ['get'] });
 
   let createdServiceContents = fs.readFileSync(newServiceRelativePath, { encoding: 'utf-8' });
 
-  expect(serviceTemplateWithParamsReplaced).toBe(createdServiceContents);
+  expect(createdServiceContents).toBe(serviceTemplateWithParamsReplaced);
 });
