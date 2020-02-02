@@ -14,7 +14,6 @@ pids
 
 # Dependency directories
 node_modules/
-config/database.js
 
 # TypeScript v1 declaration files
 typings/
