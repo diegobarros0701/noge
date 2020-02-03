@@ -1,6 +1,6 @@
 const { Model } = require('objection');
 
-class {{ name }} extends Model {
+class {{ className }} extends Model {
   static get tableName() {
     return '{{ tableName }}';
   }
@@ -20,4 +20,4 @@ class {{ name }} extends Model {
   }
 }
 
-module.exports = {{ name }};
+module.exports = { {{ className }} };
