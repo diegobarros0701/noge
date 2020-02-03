@@ -1,7 +1,9 @@
-// const router = require('express').Router();
+const routes = require('express').Router();
 
-// router.get('/users', UserController.index);
-// router.get('/users/:id', UserController.show);
-// router.post('/users', UserController.create);
-// router.patch('/users/:id', UserController.patch);
-// router.delete('/users/:id', UserController.destroy);
+// routes.get('/users', UserController.index);
+// routes.get('/users/:id', UserController.show);
+// routes.post('/users', UserController.create);
+// routes.patch('/users/:id', UserController.patch);
+// routes.delete('/users/:id', UserController.destroy);
+
+module.exports = routes;
