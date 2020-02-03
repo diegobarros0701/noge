@@ -1,4 +1,4 @@
-static async getOne(id) {
+static async getOne(id = null) {
     let {{ varName }} = await {{ modelClassName }}.query()
       .throwIfNotFound()
       .findById(id);
