@@ -1,5 +1,5 @@
 show(req, res) {
-    {{ modelName }}.getOne(req.params.id)
+    {{ serviceName }}.getOne(req.params.id)
       .then(({{ varName }}) => {
         res.json({{ varName }});
       })

@@ -1,5 +1,5 @@
 store(req, res) {
-    {{ modelName }}.insert(req.body)
+    {{ serviceName }}.insert(req.body)
       .then(({{ varName }}) => {
         res.status(201).send({{ varName }});
       })

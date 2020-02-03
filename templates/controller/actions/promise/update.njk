@@ -1,5 +1,5 @@
 update(req, res) {
-    {{ modelName }}.update({ id: req.params.id, data: req.body, method: req.method })
+    {{ serviceName }}.update({ id: req.params.id, data: req.body, method: req.method })
       .then(({{ varName }}) => {
         res.json({{ varName }});
       })

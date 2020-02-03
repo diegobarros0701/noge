@@ -1,9 +1,9 @@
 index(req, res) {
     const { s, page } = req.query;
 
-    {{ modelName }}.get(s, page)
-      .then(({{ varName }}) => {
-        res.json({{ varName }});
+    {{ serviceName }}.get(s, page)
+      .then(({{ varNamePlural }}) => {
+        res.json({{ varNamePlural }});
       })
       .catch((error) => {
         res.status(500)

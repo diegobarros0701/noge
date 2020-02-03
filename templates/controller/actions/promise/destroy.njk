@@ -1,5 +1,5 @@
 destroy(req, res) {
-    {{ modelName }}.delete(req.params.id)
+    {{ serviceName }}.delete(req.params.id)
       .then(_ => {
         res.status(204).send();
       })
