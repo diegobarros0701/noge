@@ -3,10 +3,7 @@ static async update({ id = null, data, method }) {
       .throwIfNotFound();
 
     if (method == 'PUT')
-      {{ varName }} = {{ varName }}.updateAndFetchById(id, data);
-    else {
-      {{ varName }} = {{ varName }}.patchAndFetchById(id, data);
-    }
-
-    return await {{ varName }};
+      return await {{ varName }}.updateAndFetchById(id, data);
+    
+    return await {{ varName }}.patchAndFetchById(id, data);
   }
