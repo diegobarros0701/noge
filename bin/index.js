@@ -27,13 +27,16 @@ program.
   });
 
 program
-  .command('scaffold <name> [actions...]')
+  .command('scaffold <name>')
   .description('create a model, controller and route')
   .option('--empty-controller', 'generate a controller without default actions. This overrides the actions option')
+  .option('--empty-service', 'generate a controller without default actions. This overrides the actions option')
+  .option('--actions-controller <actions>', 'specify wich actions to generate: Available values are: index, show, create, update and destroy')
+  .option('--actions-service <actions>', 'specify wich actions to generate: Available values are: get, getOne, insert, update, destroy')
   .option('--no-spec', 'do not generate spec file for generated model')
   .option('-t, --table [name]', 'the corresponding table name of the model')
-  .action(function (name, actions, options) {
-    ScaffoldGenerator.go({ name, actions, options });
+  .action(function (name, options) {
+    ScaffoldGenerator.go({ name, options });
   });
 
 program
@@ -67,7 +70,7 @@ program
 program
   .command('service <names...>')
   .description('create a service')
-  .option('--actions <actions>', 'specify which actions to generate for the service')
+  .option('--actions <actions>', 'specify wich actions to generate: Available values are: get, getOne, insert, update, destroy')
   .option('--empty', 'do not generate actions for the service')
   .option('--project-path <path>', 'the path for project dir if it is different from the current dir')
   .action(function (servicesNames, options) {
