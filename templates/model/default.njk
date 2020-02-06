@@ -10,6 +10,22 @@ class {{ className }} extends Model {
       // Write your schema definition
     };
   }
+
+  {% if relations %}
+
+  static get relationMappings() {
+    {%- for relationClass in relationsClasses %}
+    const { {{ relationClass }} } = require('./{{ relationClass }}');
+    {%- endfor %}
+
+    return {
+      {%- for relation in relations %}
+      {% include  "model/relations/" + relation.relationType + ".njk" ignore missing %}
+      {{- "," if loop.index < (relations | length) }}
+    {% endfor %}
+    {{- '};' }}
+  }
+  {%- endif %}
 }
 
 module.exports = { {{ className }} };

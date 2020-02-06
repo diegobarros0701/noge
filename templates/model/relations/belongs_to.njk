@@ -1,0 +1,8 @@
+{{ relation.relationName }}: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: {{ relation.relationClass }},
+        join: {
+          from: '{{ relation.relationParentTable }}.{{ relation.relationFrom }}',
+          to: '{{ relation.relationEndTable }}.{{ relation.relationTo }}'
+        }
+      }
