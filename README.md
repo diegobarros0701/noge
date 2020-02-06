@@ -56,11 +56,11 @@ These are all the available commands
 Options:
 
 create <name>              create a new project with the given name
-scaffold <name>            create a controller, model and route at the same time
+scaffold <names...>            create a controller, model and route at the same time
 controller <names...>      create a controller
 model <names...>           create a model
 service <names...>         create a service
-route <name>               create a route
+route <names...>               create a route
 ```
 
 ## Commands options
@@ -77,7 +77,7 @@ Options:
 --silent 		   do not show any logs while creating
 ```
 
-### # scaffold \<name\>
+### # scaffold \<names...\>
 
 ```
 Options:
