@@ -40,12 +40,13 @@ yarn global add noge
 ```
 ## The .keep file
 
-Inside the **controllers**, **models** and **services** folders inside **src** and **tests** folders have a file named **.keep**. That is because git doesn't track empty folders. 
-Feel free to delete these files if you want, but I recommend you to do it only after you push you project to your git or after you create some file inside them.
+This file is created because git doesn't track empty folders. 
+Feel free to delete these files if you want, but I recommend you to do it only after you push your project or after create some file inside the folders.
 
 ## Notes
-- Parameters between `<>` are mandatory
+- Parameters between `<>` are required
 - Parameters between `[]` are optional
+- `...` means that it accepts more than one value separeted by spaces
 
 ## Commands
 
@@ -54,12 +55,12 @@ These are all the available commands
 ```
 Options:
 
-create <name>          create a new project with the given name
-scaffold <name>        create a controller, model and route at the same time
-controller <name>      create a controller
-model <name>           create a model
-service <name>         create a service
-route <name>           create a route
+create <name>              create a new project with the given name
+scaffold <name>            create a controller, model and route at the same time
+controller <names...>      create a controller
+model <names...>           create a model
+service <names...>         create a service
+route <name>               create a route
 ```
 
 ## Commands options
@@ -81,8 +82,11 @@ Options:
 ```
 Options:
 
+--empty-controller                     generate a controller without default actions. This overrides the --actions-controller
+--empty-service                        generate an action without default actions. This overrides the --actions-service
+--actions-controller		       specify wich actions to generate: Available values are: index, show, create, update and destroy
+--actions-service                      specify wich actions to generate: Available values are: get, getOne, insert, update, destroy
 --no-spec			       do not generate spec file for the generated model and controller
---empty-controller                     generate a controller without default actions. This overrides the actions option
 --table                   	       the corresponding table name of the model
 --has-many <model>[:[from, to]]	       generate a has many relation with the specified model
 --belongs-to <model>[:[from, to]]      generate a belongs to relation with the specified model
@@ -104,23 +108,31 @@ noge scaffold product --belongs-to user:[user_id, id]
 noge scaffold user --has-one address:[id, user_id]
 ```
 
-### # controller \<name\>
+### # controller \<names...\>
 
 ```
 Options:
 
---no-spec                                             do not generate spec file for the generated controller
---empty-controller                                    generate a controller without default actions. This overrides the actions option
---actions [index, show, create, update, destroy]      specify wich actions to generate
+--actions <actions>      specify wich actions to generate: Available values are: index, show, create, update and destroy
+--no-spec                do not generate spec file for the generated controller
+--empty                  generate a controller without default actions. This overrides the actions option
 ```
 
-### # model \<name\>
+Examples:
+
+```
+noge controller user
+noge controller user --empty
+noge controller user --actions index,show,destroy
+```
+
+### # model \<names...\>
 
 ```
 Options:
 
 --no-spec                              do not generate spec file for the generated model
---table                                the corresponding table name of the model
+-t, --table                            the corresponding table name of the model
 --has-many <model>[:[from, to]]	       generate a has many relation with the specified model
 --belongs-to <model>[:[from, to]]      generate a belongs to relation with the specified model
 --has-one <model>[:[from, to]]         generate a has one relation with the specified model
@@ -141,13 +153,13 @@ noge model product --belongs-to user:[user_id, id]
 noge model user --has-one address:[id, user_id]
 ```
 
-### # service \<name\> [--actions, --empty-body, --project-path]
+### # service \<names...\>
 
 ```
 Options:
 
---empty-body             do not generate actions for the service
---actions <actions>      specify which actions to generate for the service
+--actions <actions>      specify wich actions to generate: Available values are: get, getOne, insert, update, destroy
+--empty                  generate a service without default actions. This overrides the --actions
 --project-path           the path for project dir if it is different from the current dir
 ```
 
@@ -155,7 +167,7 @@ Examples:
 
 ```
 noge service user
-noge service user --empty-body
+noge service user --empty
 noge service user --actions get,getOne,insert
 noge service user --project-path projects/my-projetc
 ```
