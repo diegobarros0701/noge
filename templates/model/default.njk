@@ -11,7 +11,7 @@ class {{ className }} extends Model {
     };
   }
 
-  {% if relations %}
+  {%- if relations | length %}
 
   static get relationMappings() {
     {%- for relationClass in relationsClasses %}

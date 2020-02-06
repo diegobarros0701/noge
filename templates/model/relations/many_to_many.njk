@@ -2,12 +2,11 @@
         relation: Model.ManyToManyRelation,
         modelClass: {{ relation.relationClass }},
         join: {
-          from: '{{ relation.parentTable }}.{{ relation.parentTableColumn }}',
+          from: '{{ relation.relationParentTable }}.{{ relation.relationParentTableColumn }}',
           through: {
-            // persons_movies is the join table.
-            from: '{{ relation.midTable }}.{{ relationMidTableFromColumn}}',
-            to: '{{ relation.midTable }}.{{ relationMidTableToColumn}}'
+            from: '{{ relation.relationMidTable }}.{{ relation.relationMidTableFromColumn}}',
+            to: '{{ relation.relationMidTable }}.{{ relation.relationMidTableToColumn}}'
           },
-          to: '{{ relation.relationEndTable }}.{{ relation.endTableColumn }}'
+          to: '{{ relation.relationEndTable }}.{{ relation.relationEndTableColumn }}'
         }
       }
