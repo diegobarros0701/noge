@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const VERSION = '2.4.1';
+const VERSION = '2.4.3';
 const program = require('commander');
 const { ScaffoldGenerator } = require('../lib/generators/scaffold_generator');
 const { ModelGenerator } = require('../lib/generators/model_generator');
