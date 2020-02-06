@@ -8,6 +8,7 @@ class {{ className }} extends Model {
   static get jsonSchema() {
     return {
       // Write your schema definition
+      additionalProperties: false
     };
   }
 
