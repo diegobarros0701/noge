@@ -27,7 +27,7 @@ program.
   });
 
 program
-  .command('scaffold <name>')
+  .command('scaffold <names...>')
   .description('create a model, controller and route')
   .option('--empty-controller', 'generate a controller without default actions. This overrides the --actions-controller')
   .option('--empty-service', 'generate a service without default actions. This overrides the --actions-service')
@@ -50,8 +50,22 @@ program
 
     return relations;
   }, [])
-  .action(function (name, options) {
-    ScaffoldGenerator.go({ name, options });
+  .action(function (names, options) {
+
+    if (names.length > 1) {
+      // the options will be delete because there is no way
+      // to track when scaffolding more than one at once
+      delete options.belongsTo;
+      delete options.hasMany;
+      delete options.manyToMany;
+      delete options.table;
+    }
+
+    names.forEach(function (name) {
+      ScaffoldGenerator.go({ name, options })
+        .catch(error => console.log(error.message));
+    });
+
   });
 
 program
