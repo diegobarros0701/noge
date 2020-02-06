@@ -95,20 +95,6 @@ Options:
 
 For the relation syntax see [relation expression](#relation-expression)
 
-### # scaffold \<name\> [--belongs-to | --has-many | --many-to-many]
-| Option | Description |
-| -- | -- |
-| from | the id |
-| to | the relation id |
-
-Examples:
-
-```bash
-noge scaffold user --has-many product:[id, product_id]
-noge scaffold product --belongs-to user:[user_id, id]
-noge scaffold user --has-one address:[id, user_id]
-```
-
 ### # controller \<names...\>
 
 ```
