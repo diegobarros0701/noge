@@ -21,4 +21,6 @@ app.use(cors(require('./config/cors')));
 app.use(express.json());
 app.use(router);
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, function () {
+  console.log(`Server started at port ${process.env.PORT}`);
+});

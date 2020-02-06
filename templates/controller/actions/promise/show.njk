@@ -5,9 +5,6 @@ show(req, res) {
       })
       .catch((error) => {
         res.status(error instanceof NotFoundError ? 404 : 500)
-          .json({
-            error: true,
-            message: error.message
-          });
+          .json({ error );
       });
   }

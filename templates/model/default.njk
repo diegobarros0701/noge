@@ -10,14 +10,6 @@ class {{ className }} extends Model {
       // Write your schema definition
     };
   }
-
-  $beforeInsert() {
-    delete this.id;
-  }
-
-  $beforeUpdate() {
-    delete this.id;
-  }
 }
 
 module.exports = { {{ className }} };
