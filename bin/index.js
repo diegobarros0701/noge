@@ -1,5 +1,7 @@
 #! /usr/bin/env node
-const VERSION = '2.4.3';
+
+const fs = require('fs-extra');
+const path = require('path');
 const program = require('commander');
 const { ScaffoldGenerator } = require('../lib/generators/scaffold_generator');
 const { ModelGenerator } = require('../lib/generators/model_generator');
@@ -8,6 +10,9 @@ const { ProjectGenerator } = require('../lib/generators/project_generator');
 const { ServiceGenerator } = require('../lib/generators/service_generator');
 const chalk = require('chalk');
 const figlet = require('figlet');
+
+const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), { encoding: 'utf-8' }));
+const VERSION = packageJson.version;
 
 console.log(
   chalk.yellow(
