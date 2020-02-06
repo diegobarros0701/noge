@@ -101,7 +101,7 @@ test("should create a service with requested params replaced", async () => {
     serviceName: 'user',
     options: {
       projectPath: projectPath,
-      emptyBody: true
+      empty: true
     }
   };
 
@@ -123,7 +123,7 @@ test("should create a service with an empty body even when actions are specified
     options: {
       projectPath: projectPath,
       actions: 'get',
-      emptyBody: true
+      empty: true
     }
   };
 
