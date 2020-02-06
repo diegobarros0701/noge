@@ -35,6 +35,21 @@ program
   .option('--actions-service <actions>', 'specify wich actions to generate: Available values are: get, getOne, insert, update, destroy')
   .option('--no-spec', 'do not generate spec file for generated model')
   .option('-t, --table [name]', 'the corresponding table name of the model')
+  .option('--belongs-to <relation>', 'the belongs to relation', (relation, relations) => {
+    relations.push(relation);
+
+    return relations;
+  }, [])
+  .option('--has-many <relation>', 'the has many relation', (relation, relations) => {
+    relations.push(relation);
+
+    return relations;
+  }, [])
+  .option('--many-to-many <relation>', 'the many to many relation', (relation, relations) => {
+    relations.push(relation);
+
+    return relations;
+  }, [])
   .action(function (name, options) {
     ScaffoldGenerator.go({ name, options });
   });
@@ -57,6 +72,21 @@ program
 program
   .command('model <names...>')
   .description('create a model')
+  .option('--belongs-to <relation>', 'the belongs to relation', (relation, relations) => {
+    relations.push(relation);
+
+    return relations;
+  }, [])
+  .option('--has-many <relation>', 'the has many relation', (relation, relations) => {
+    relations.push(relation);
+
+    return relations;
+  }, [])
+  .option('--many-to-many <relation>', 'the many to many relation', (relation, relations) => {
+    relations.push(relation);
+
+    return relations;
+  }, [])
   .option('--no-spec', 'do not generate spec file for generated model')
   .option('-t, --table [name]', 'the corresponding table name of the model')
   .action(function (modelsNames, options) {
