@@ -82,19 +82,20 @@ Options:
 ```
 Options:
 
---empty-controller                     generate a controller without default actions. This overrides the --actions-controller
---empty-service                        generate an action without default actions. This overrides the --actions-service
---actions-controller		       specify wich actions to generate: Available values are: index, show, create, update and destroy
---actions-service                      specify wich actions to generate: Available values are: get, getOne, insert, update, destroy
---no-spec			       do not generate spec file for the generated model and controller
---table                   	       the corresponding table name of the model
---has-many <model>[:[from, to]]	       generate a has many relation with the specified model
---belongs-to <model>[:[from, to]]      generate a belongs to relation with the specified model
---has-one <model>[:[from, to]]         generate a has one relation with the specified model
---create-relations                     create the models of the specified relations
+--empty-controller                        generate a controller without default actions. This overrides the --actions-controller
+--empty-service                           generate an action without default actions. This overrides the --actions-service
+--actions-controller		          specify wich actions to generate: Available values are: index, show, create, update and destroy
+--actions-service                         specify wich actions to generate: Available values are: get, getOne, insert, update, destroy
+--no-spec			          do not generate spec file for the generated model and controller
+--table                   	          the corresponding table name of the model
+--belongs-to <relation_expression>        generate a belongs to relation with the specified model
+--has-many <relation_expression>          generate a has many relation with the specified model
+--many-to-many <relation_expression>      generate a many to many relation with the specified model
 ```
 
-### # scaffold \<name\> [--has-many | --has-one | --belongs-to]
+For the relation syntax see [relation expression](#relation-expression)
+
+### # scaffold \<name\> [--belongs-to | --has-many | --many-to-many]
 | Option | Description |
 | -- | -- |
 | from | the id |
@@ -131,27 +132,14 @@ noge controller user --actions index,show,destroy
 ```
 Options:
 
---no-spec                              do not generate spec file for the generated model
--t, --table                            the corresponding table name of the model
---has-many <model>[:[from, to]]	       generate a has many relation with the specified model
---belongs-to <model>[:[from, to]]      generate a belongs to relation with the specified model
---has-one <model>[:[from, to]]         generate a has one relation with the specified model
---create-relations                     create the models of the specified relations
+--no-spec                                 do not generate spec file for the generated model
+-t, --table                               the corresponding table name of the model
+--belongs-to <relation_expression>        generate a belongs to relation with the specified model
+--has-many <relation_expression>          generate a has many relation with the specified model
+--many-to-many <relation_expression>      generate a many to many relation with the specified model
 ```
 
-### # model \<name\> [--has-many | --has-one | --belongs-to]
-| Option | Description |
-| -- | -- |
-| from | the id |
-| to | the relation id |
-
-Examples:
-
-```bash
-noge model user --has-many product:[id, product_id]
-noge model product --belongs-to user:[user_id, id]
-noge model user --has-one address:[id, user_id]
-```
+For the relation syntax see [relation expression](#relation-expression)
 
 ### # service \<names...\>
 
@@ -177,12 +165,41 @@ noge service user --project-path projects/my-projetc
 | -- | -- | -- |
 | --actions | get,getOne,insert,update,delete | At least one is necessary if this option is present |
 
-### # route \<name\> [actions...]
+### # route \<names...\>
+
+<p><span style="color: red">Not available yet</span></p>
 
 Examples:
+
 ```bash
 noge route user
-noge route user index, show, update
+```
+
+## Relation expression
+
+The syntax for relations are:  
+
+* For `has-many` and `belongs-to`:  
+`relation_model`:`relation_model_column`:`parent_column`
+
+* For `many-to-many`:  
+`relation_model`:`relation_model_column`:`middle_table`: `middle_table_column_relation`:`middle_table_column_parent`:`parent_column`  
+
+| Keyword | Description |
+| -- | -- |
+| `relation_model` | The referenced model |
+| `relation_model_column` | The referenced model column |
+| `middle_table` | The middle table. The table that contains the many to many relation |
+| `middle_table_column_relation` | The middle table column that references the `relation_model_column` |
+| `middle_table_column_parent` | The middle table column that references the `parent_column` |
+| `parent_column` | The parent column beein referenced |
+
+Examples:
+
+```bash
+noge model animal --belongs-to person:id:personId
+noge model person --has-many animal:personId:id
+noge model person --many-to-many movie:id:person_movies:movieId:personId:id
 ```
 
 ## Supported frameworks
