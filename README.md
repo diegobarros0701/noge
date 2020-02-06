@@ -93,7 +93,17 @@ Options:
 --many-to-many <relation_expression>      generate a many to many relation with the specified model
 ```
 
-For the relation syntax see [relation expression](#relation-expression)
+For the relation syntax see [relation expression](#relation-expression)  
+  
+#### # Note about scaffold
+
+
+When scaffolding more than one at once, these options will be ignore:  
+* `--table`
+* `--belongs-to`
+* `--has-many`
+* `--many-to-many`
+
 
 ### # controller \<names...\>
 
