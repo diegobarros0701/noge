@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-
+const VERSION = '2.4.1';
 const program = require('commander');
 const { ScaffoldGenerator } = require('../lib/generators/scaffold_generator');
 const { ModelGenerator } = require('../lib/generators/model_generator');
@@ -12,8 +12,11 @@ const figlet = require('figlet');
 console.log(
   chalk.yellow(
     figlet.textSync('NOGE', { horizontalLayout: 'full' })
-  ), chalk.cyanBright('\n Generator for Node.js web projects\n')
+  ), chalk.cyanBright(`\n Generator for Node.js web projects - v${VERSION}\n`)
 );
+
+program
+  .version(`v${VERSION}`);
 
 program.
   command('create <path>')
