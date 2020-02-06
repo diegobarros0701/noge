@@ -29,8 +29,8 @@ program.
 program
   .command('scaffold <name>')
   .description('create a model, controller and route')
-  .option('--empty-controller', 'generate a controller without default actions. This overrides the actions option')
-  .option('--empty-service', 'generate a controller without default actions. This overrides the actions option')
+  .option('--empty-controller', 'generate a controller without default actions. This overrides the --actions-controller')
+  .option('--empty-service', 'generate a service without default actions. This overrides the --actions-service')
   .option('--actions-controller <actions>', 'specify wich actions to generate: Available values are: index, show, create, update and destroy')
   .option('--actions-service <actions>', 'specify wich actions to generate: Available values are: get, getOne, insert, update, destroy')
   .option('--no-spec', 'do not generate spec file for generated model')
@@ -44,7 +44,7 @@ program
   .description('create a controller')
   .option('--actions <actions>', 'specify wich actions to generate: Available values are: index, show, create, update and destroy')
   .option('--async-await-style', 'generate controller actions using async await instead of promises')
-  .option('--empty', 'generate a controller without default actions. This overrides the actions option')
+  .option('--empty', 'generate a controller without default actions. This overrides the --actions')
   .option('--no-spec', 'do not generate spec file for generated controller')
   .action(async function (controllersNames, options) {
 
@@ -71,7 +71,7 @@ program
   .command('service <names...>')
   .description('create a service')
   .option('--actions <actions>', 'specify wich actions to generate: Available values are: get, getOne, insert, update, destroy')
-  .option('--empty', 'do not generate actions for the service')
+  .option('--empty', 'generate a service without default actions. This overrides the --actions')
   .option('--project-path <path>', 'the path for project dir if it is different from the current dir')
   .action(function (servicesNames, options) {
 
