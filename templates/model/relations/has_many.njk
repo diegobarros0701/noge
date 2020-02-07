@@ -1,8 +1,8 @@
-{{ relation.relationName }}: {
+{{ relation.name }}: {
         relation: Model.HasManyRelation,
-        modelClass: {{ relation.relationClass }},
+        modelClass: {{ relation.class }},
         join: {
-          from: '{{ relation.relationParentTable }}.{{ relation.relationFrom }}',
-          to: '{{ relation.relationEndTable }}.{{ relation.relationTo }}'
+          from: '{{ relation.from.table }}.{{ relation.from.column }}',
+          to: '{{ relation.to.table }}.{{ relation.to.column }}'
         }
       }

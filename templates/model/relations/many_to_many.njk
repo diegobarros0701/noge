@@ -1,12 +1,12 @@
-{{ relation.relationName }}: {
+{{ relation.name }}: {
         relation: Model.ManyToManyRelation,
-        modelClass: {{ relation.relationClass }},
+        modelClass: {{ relation.class }},
         join: {
-          from: '{{ relation.relationParentTable }}.{{ relation.relationParentTableColumn }}',
+          from: '{{ relation.from.table }}.{{ relation.from.column }}',
           through: {
-            from: '{{ relation.relationMidTable }}.{{ relation.relationMidTableFromColumn}}',
-            to: '{{ relation.relationMidTable }}.{{ relation.relationMidTableToColumn}}'
+            from: '{{ relation.through.from.table }}.{{ relation.through.from.column }}',
+            to: '{{ relation.through.to.table }}.{{ relation.through.to.column }}',
           },
-          to: '{{ relation.relationEndTable }}.{{ relation.relationEndTableColumn }}'
+          to: '{{ relation.to.table }}.{{ relation.to.column }}'
         }
       }

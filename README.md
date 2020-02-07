@@ -176,19 +176,25 @@ noge route user
 The syntax for relations are:  
 
 * For `has-many` and `belongs-to`:  
-`relation_model`:`relation_model_column`:`parent_column`
-
-* For `many-to-many`:  
-`relation_model`:`relation_model_column`:`middle_table`: `middle_table_column_relation`:`middle_table_column_parent`:`parent_column`  
-
+`relation_model`:`relation_model_column`:`parent_column`  
+  
 | Keyword | Description |
 | -- | -- |
-| `relation_model` | The referenced model |
-| `relation_model_column` | The referenced model column |
+| `relation_table` | The referenced table |
+| `relation_table_column` | The referenced table column |
+| `parent_column` | The parent column beeing referenced |
+
+* For `many-to-many`:  
+`middle_table`:`middle_table_left_column`:`middle_table_right_colmun`:`right_model`:`right_model_column`:`left_model_column`
+  
+| Keyword | Description |
+| -- | -- |
 | `middle_table` | The middle table. The table that contains the many to many relation |
-| `middle_table_column_relation` | The middle table column that references the `relation_model_column` |
-| `middle_table_column_parent` | The middle table column that references the `parent_column` |
-| `parent_column` | The parent column beein referenced |
+| `middle_table_left_column` | The column name of the `middle_table` referenced from the left side |
+| `middle_table_right_column` | The column name of the `middle_table` referenced from the right side |
+| `right_model` | The model referenced in `middle_model` |
+| `right_model_column` | The column name of the `right_model` referenced from the `middle_model_right_column` |
+| `left_model_column` | The column name of the `left_model` (model beeing generated) referenced from the `middle_table_left_column` |
 
 Examples:
 
