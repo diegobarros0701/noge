@@ -1,11 +1,11 @@
 {
   "name": "{{ projectName }}",
   "version": "{{ version }}",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

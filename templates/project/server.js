@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Model } = require('objection');
 const knex = require('./config/database');
 const express = require('express');
+const app = express();
 const cors = require('cors');
 const router = require('./config/routes');
 const pino = require('express-pino-logger')({
@@ -13,8 +14,6 @@ const pino = require('express-pino-logger')({
 });
 
 Model.knex(knex);
-
-const app = express();
 
 app.use(pino);
 app.use(cors(require('./config/cors')));
